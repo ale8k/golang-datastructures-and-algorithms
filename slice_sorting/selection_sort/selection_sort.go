@@ -2,7 +2,6 @@ package selectionsort
 
 // Sorts a slice of integers using selection sort algorithm
 func SelectionSortInt(slice []int) {
-
 	for i := 0; i < len(slice); i++ {
 		minToSet := i
 		// Use the iterations index for the inner loop
@@ -19,7 +18,5 @@ func SelectionSortInt(slice []int) {
 			slice[minToSet] = slice[i]
 			slice[i] = temp
 		}
-
 	}
-
 }
