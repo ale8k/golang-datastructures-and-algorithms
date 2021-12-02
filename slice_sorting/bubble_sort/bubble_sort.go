@@ -10,6 +10,7 @@ func BubbleSortInt(slice []int) {
 	for i := range slice {
 		for j := range slice {
 			if i != len(slice)-1 && j != len(slice)-1 {
+				// Iterate over every item for every item (n^2) and compare
 				if slice[j] > slice[j+1] {
 					swapWithNextIndex(j, slice)
 				}
