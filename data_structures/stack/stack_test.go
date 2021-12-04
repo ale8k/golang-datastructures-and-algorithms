@@ -6,21 +6,19 @@ import (
 )
 
 func TestStack_Pop(t *testing.T) {
-	type fields struct {
-		store []interface{}
-	}
 	tests := []struct {
-		name   string
-		fields fields
-		want   interface{}
+		name string
+		want interface{}
 	}{
-		// TODO: Add test cases.
+		{
+			name: "it pops an item off the stack correctly",
+			want: 3,
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			s := &Stack{
-				store: tt.fields.store,
-			}
+			s := &Stack{}
+			s.Push(3)
 			if got := s.Pop(); !reflect.DeepEqual(got, tt.want) {
 				t.Errorf("Stack.Pop() = %v, want %v", got, tt.want)
 			}
