@@ -38,14 +38,22 @@ func TestIntQueue_Dequeue(t *testing.T) {
 		queue []int
 	}
 	tests := []struct {
-		name   string
-		fields fields
-		want   int
+		name    string
+		fields  fields
+		want    int
+		wantErr bool
 	}{
 		{
-			name:   "it dequeues the last element correctly",
-			fields: fields{[]int{40, 20, 10}},
-			want:   10,
+			name:    "it dequeues the last element correctly",
+			fields:  fields{[]int{40, 20, 10}},
+			want:    10,
+			wantErr: false,
+		},
+		{
+			name:    "it attempts to dequeue empty list",
+			fields:  fields{[]int{}},
+			want:    0,
+			wantErr: true,
 		},
 	}
 	for _, tt := range tests {
@@ -53,8 +61,12 @@ func TestIntQueue_Dequeue(t *testing.T) {
 			q := &IntQueue{
 				queue: tt.fields.queue,
 			}
-			if got := q.Dequeue(); got != tt.want {
+			got, err := q.Dequeue()
+			if err == nil && got != tt.want {
 				t.Errorf("IntQueue.Dequeue() = %v, want %v", got, tt.want)
+			}
+			if err == nil && tt.wantErr {
+				t.Errorf("IntQueue.Dequeue() did not error as expected")
 			}
 		})
 	}
