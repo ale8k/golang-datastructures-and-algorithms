@@ -1,7 +1,6 @@
 package linearsearch
 
 import (
-	"fmt"
 	"reflect"
 )
 
@@ -11,8 +10,6 @@ func PrimitiveSearch(param interface{}, slice interface{}) int {
 	sliceType := reflect.TypeOf(slice)
 	sliceKind := sliceType.Kind()
 	sliceVal := reflect.ValueOf(slice)
-
-	fmt.Println(sliceType, sliceKind, sliceVal)
 
 	if sliceKind == reflect.Slice && sliceVal.Len() > 0 {
 		for i := 0; i < sliceVal.Len(); i++ {
