@@ -10,6 +10,9 @@ func (q *IntQueue) Enqueue(elements ...int) {
 	q.queue = append(q.queue, elements...)
 }
 
+// Attempt to dequeue an item
+// if no items are available to be dequeued, returns 0
+// and an error
 func (q *IntQueue) Dequeue() (int, error) {
 	if len(q.queue) >= 1 {
 		lastQueuedItem := q.queue[len(q.queue)-1]
