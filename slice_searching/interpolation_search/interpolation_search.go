@@ -15,14 +15,7 @@ func InterpolationSearch(param int, slice []int) int {
 			return -1
 		}
 
-		//	 		((Hi -  Lo)/(slice[Hi]  -slice[Lo]     ))*(X-slice[Lo])
 		mid = low + ((high-low)/(slice[high]-slice[low]))*(param-slice[low])
-
-		// where −
-		// 	A    = list
-		// 	Lo   = Lowest index of the list
-		// 	Hi   = Highest index of the list
-		// 	A[n] = Value stored at index n in the list
 
 		if slice[mid] == param {
 			return mid
